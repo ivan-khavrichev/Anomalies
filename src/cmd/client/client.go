@@ -26,7 +26,7 @@ func main() {
 	logger := logger.InitLog("app.log")
 
 	// init dotenv
-	err := godotenv.Load(".env")
+	err := godotenv.Load("../../.env")
 	if err != nil {
 		log.Fatalf("cant load .env", err)
 	}

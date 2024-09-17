@@ -5,6 +5,8 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"team/transmitter/internal/domain"
 )
 
 func ConnectDB(dsn string) (*gorm.DB, error) {
@@ -13,5 +15,11 @@ func ConnectDB(dsn string) (*gorm.DB, error) {
 		log.Println("can`t connect to database")
 		return nil, err
 	}
+
+	if err := db.AutoMigrate(&domain.AnomalyMessage{}); err != nil {
+		log.Println("can`t automigrate database")
+		return nil, err
+	}
+
 	return db, nil
 }

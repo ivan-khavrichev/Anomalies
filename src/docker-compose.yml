@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15.8-alpine
+    container_name: db_postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pwd1234
+      - POSTGRES_DB=test
+      - POSTGRES_HOST=127.0.0.1
+    ports:
+      - "54320:5432"
